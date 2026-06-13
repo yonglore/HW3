@@ -1,0 +1,13 @@
+.venv/
+.idea/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+data/*.csv
+data/*.html
+local_data/*.csv
+/HW.ipynb
+
+# у меня мак ос
+.DS_Store
