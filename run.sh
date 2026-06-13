@@ -15,9 +15,18 @@ case "$1" in
     python generator/generate.py local_data
     ;;
 
+  build_reporter)
+    docker build -t hw3-reporter ./reporter
+    ;;
+
+  run_reporter)
+    mkdir -p data
+    docker run --rm -v "$(pwd)/data:/data" hw3-reporter
+    ;;
+
   *)
     echo "Unknown command: $1"
-    echo "Available commands: build_generator, run_generator, create_local_data"
+    echo "Available commands: build_generator, run_generator, create_local_data, build_reporter, run_reporter"
     exit 1
     ;;
 esac
