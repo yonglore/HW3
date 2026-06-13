@@ -24,9 +24,28 @@ case "$1" in
     docker run --rm -v "$(pwd)/data:/data" hw3-reporter
     ;;
 
+  structure)
+    find . -print
+    ;;
+
+  clear_data)
+    mkdir -p data
+    rm -f data/*.csv data/*.html
+    ;;
+
+  inside_generator)
+    mkdir -p data
+    docker run --rm -v "$(pwd)/data:/data" hw3-generator ls -la /data
+    ;;
+
+  inside_reporter)
+    mkdir -p data
+    docker run --rm -v "$(pwd)/data:/data" hw3-reporter ls -la /data
+    ;;
+
   *)
     echo "Unknown command: $1"
-    echo "Available commands: build_generator, run_generator, create_local_data, build_reporter, run_reporter"
+    echo "Available commands: build_generator, run_generator, create_local_data, build_reporter, run_reporter, structure, clear_data, inside_generator, inside_reporter"
     exit 1
     ;;
 esac
